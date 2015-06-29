@@ -11,3 +11,15 @@ select t1.name from Customers t1 where t1.id not in (select customerid from Orde
 
 Delete Duplicate Emails
 delete p1 from Person p1,Person p2 where p1.email=p2.email and p1.id>p2.id;
+
+Second Highest Salary
+select max(salary) from Employee where salary !=(select max(salary) from Employee);
+
+Employees Earning More Than Their Managers 
+select p1.name from Employee p1 left join Employee p2 on p1.managerId = p2.id where p1.salary>p2.salary;
+
+Combine Two Tables
+select p.FirstName, p.LastName, a.City, a.State from Person p left join Address a on p.personid = a.personid;
+
+Department Highest Salary
+select t2.name,t1.name,t1.salary from Employee t1,(select d.id,d.name,max(e.salary) as salary from Employee e left join Department d on e.departmentid=d.id where d.name is not null group by d.id) t2 where t1.departmentid = t2.id and t1.salary = t2.salary;
