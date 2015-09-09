@@ -1,0 +1,1 @@
+select t2.name,t1.name,t1.salary from Employee t1,(select d.id,d.name,max(e.salary) as salary from Employee e left join Department d on e.departmentid=d.id where d.name is not null group by d.id) t2 where t1.departmentid = t2.id and t1.salary = t2.salary;
