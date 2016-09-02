@@ -7,49 +7,52 @@
 
 var longestPalindrome = function(s) {
     if (s.length < 3) return s;
-    var max = 0;
-    var sum, isEven, j, str;
-    var index, length;
-    for (var i = 1; i < s.length; i++) {
-        j = 1;
-        if (s[i] == s[i + 1]) {
-            isEven = 1;
-        } else {
-            isEven = 0;
-        }
-        while ((i - j) >= 0 && (i + j + isEven) < s.length) {
-            if (s[i - j] == s[i + j + isEven]) {
-                j++;
-            } else {
-                break;
+    var index = 0;
+    var length = 0;
+    var isEven = 0;
+    var tempLen;
+    for (var i = 0; i < s.length; i++) {
+        j = 0;
+        if (s[i - 1] == s[i + 1]) {
+            while ((i + j) < s.length && (i - j) >= 0) {
+                if (s[i - j] == s[i + j]) {
+                    tempLen = j * 2 + 1;
+                    if (tempLen > length) {
+                        index = i - j;
+                        length = tempLen;
+                        isEven = 0;
+                    }
+                    j++;
+                } else {
+                    break;
+                }
             }
         }
-
-        if (j > max) {
-            max = j;
-            index = i;
+        j = 0;
+        if (s[i] == s[i + 1]) {
+            while ((i + j + 1) < s.length && (i - j) >= 0) {
+                if (s[i - j] == s[i + j + 1]) {
+                    tempLen = j * 2 + 2;
+                    if (tempLen > length) {
+                        index = i - j;
+                        length = tempLen;
+                        isEven = 1;
+                    }
+                    j++;
+                } else {
+                    break;
+                }
+            }
         }
     }
-    str = s.substr(index - max + 1, max * 2 + isEven);
-    var allSame = true;
-    for (i = 1; i < str.length; i++) {
-        if (str[i - 1] != str[i]) {
-            allSame = false;
-            break;
-        }
-    }
-    if(allSame){
-        if(str[0]==s[index+max+isEven+1]){
-            str = str+s[index+max+isEven+1];
-        };
-    }
-    console.log(str);
-    return str;
+    console.log(s, "\t", s.substr(index, length));
+    return s.substr(index.length);
 };
 
 longestPalindrome("ccc");
+longestPalindrome("ccd");
 longestPalindrome("cccc");
-longestPalindrome("ccccc");
+longestPalindrome("abadd");
 longestPalindrome("cccccc");
 longestPalindrome("aba");
 longestPalindrome("abb");
