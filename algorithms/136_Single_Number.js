@@ -6,6 +6,6 @@ var singleNumber = function(nums) {
     return flag;
 };
 
-var nums=[1,2,3,4,4,5,5,3,1];
+var nums = [1, 2, 3, 4, 4, 5, 5, 3, 1];
 var res = singleNumber(nums);
 console.log(res);
