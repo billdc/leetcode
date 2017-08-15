@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+
+
+
+    <style type="text/css">
+        .tube {
+            border: solid 6px red;
+            border-top: none;
+            border-bottom: none;
+            width: 50px;
+            height: 180px;
+            position: relative;
+            margin: 0 auto;
+            transition: transform 1s;
+        }
+        
+        .tube:after,
+        .tube:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            background: blue;
+        }
+        
+        .tube:after {
+            top: 100%;
+            left: -6px;
+            width: 100%;
+            padding-bottom: 100%;
+            border: solid 6px red;
+            border-top: none;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            box-shadow: 0px -30px 0px -6px blue, 0px -50px 0px -6px blue;
+        }
+        
+        .tube:before {
+            bottom: 0;
+            height: 100px;
+            width: 50px;
+            z-index: -1;
+            transition: transform 1s;
+        }
+        
+        .tube:hover {
+            transform: rotate(60deg);
+        }
+        
+        .tube:hover:before {
+            transform: skewY(-60deg);
+        }
+    </style>
+
+    <title> by webtiki</title>
+
+
+
+
+
+
+
+    <script type='text/javascript'>
+        //<![CDATA[
+        window.onload = function() {
+
+            } //]]>
+    </script>
+
+
+</head>
+
+<body>
+    <h1>Hover the tube!</h1>
+
+    <div class="tube"></div>
+
+    <script>
+        // tell the embed parent frame the height of the content
+        if (window.parent && window.parent.parent)
+        {
+            window.parent.parent.postMessage(["resultsFrame",
+            {
+                height: document.body.getBoundingClientRect().height,
+                slug: "wq7wqn1s"
+            }], "*")
+        }
+    </script>
+
+</body>
+
+</html>
